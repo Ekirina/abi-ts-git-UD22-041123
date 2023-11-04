@@ -39,9 +39,6 @@ public class Vista extends JFrame {
 		
 		//ConexionSQL con = new ConexionSQL.mySQLConnection();
 
-		sql = "SELECT * FROM Cliente";
-		Statement st;
-		
 		table = new JTable();
 		table.setFont(new Font("Tahoma", Font.BOLD, 13));
 		table.setBackground(new Color(216, 191, 216));

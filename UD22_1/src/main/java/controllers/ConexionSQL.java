@@ -52,7 +52,6 @@ public class ConexionSQL {
 			Statement stdb= conexion.createStatement();
 			stdb.executeUpdate(Querydb);
 			
-			
 			String Query = "CREATE TABLE "+name+ " " + sentencia;
 			
 			Statement st = conexion.createStatement();
