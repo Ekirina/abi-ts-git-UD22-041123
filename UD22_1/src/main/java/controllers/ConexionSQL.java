@@ -79,4 +79,36 @@ public class ConexionSQL {
 			System.out.println("Error insertando datos");
 		}
 	}
+	public static void deleteData(String db, String name, String sentencia) {
+		try {
+			String Querydb = "USE " +db+ ";";
+			Statement stdb= conexion.createStatement();
+			stdb.executeUpdate(Querydb);
+			
+			String Query = "DELETE FROM "+name + " "+ sentencia;
+			
+			Statement st = conexion.createStatement();
+			st.executeUpdate(Query);
+			System.out.println("Datos eliminados con éxito");
+		}catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error eliminando datos");
+		}
+	}
+	public static void updateData(String db, String name, String sentencia) {
+		try {
+			String Querydb = "USE " +db+ ";";
+			Statement stdb= conexion.createStatement();
+			stdb.executeUpdate(Querydb);
+			
+			String Query = "UPDATE "+name + " "+ sentencia;
+			
+			Statement st = conexion.createStatement();
+			st.executeUpdate(Query);
+			System.out.println("Datos actualizados con éxito");
+		}catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			System.out.println("Error actualizando datos");
+		}
+	}
 }
