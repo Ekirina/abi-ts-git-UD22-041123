@@ -11,8 +11,12 @@ public class Tablas extends ConexionSQL{
 				+ "direccion VARCHAR(250) DEFAULT NULL, "
 				+ "dni INT(11) DEFAULT NULL, "
 				+ "fecha date DEFAULT NULL)");
-		ConexionSQL.insertData("videoclub", "Cliente", "(id, nombre, apellido, direccion, dni, fecha) values ('9565065341', 'Elna', 'Benbough', "
-				+ "'95897 Veith Avenue', 69309020291, '2023-03-27'),");
+		ConexionSQL.insertData("videoclub", "Cliente", "(id, nombre, apellido, direccion, dni, fecha) values (10, 'Elna', 'Benbough', "
+				+ "'95897 Veith Avenue', 10, '2023-03-27');");
+		ConexionSQL.insertData("videoclub", "Cliente", "(id, nombre, apellido, direccion, dni, fecha) values (8, 'Ferfetch', 'Bull', "
+				+ "'65432 Day Avenue', 9, '2023-01-17');");
+		ConexionSQL.insertData("videoclub", "Cliente", "(id, nombre, apellido, direccion, dni, fecha) values (7, 'Charm', 'Meryl', "
+				+ "'53402 Post Avenue', 6, '2023-05-07');");
 		ConexionSQL.closeConnection();
 	}
 }

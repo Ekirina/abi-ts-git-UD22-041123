@@ -12,22 +12,32 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import controllers.ConexionSQL;
+import controllers.Controlador;
+import models.Cliente;
 
 
 public class Vista extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTable table_c;
+	private JTable table;
 	private String usuario;
 	private String pass;
 	private String bbdd;
 	private String sql;
-	private JTable table_v;
-																												
-		public Vista() {
+	public JButton btnInsert;
+	public JButton btnUpdate;
+	public JButton btnEliminar;
+	DefaultTableModel model = new DefaultTableModel();                    
+
+
+	ArrayList<Cliente> listaClientes;																											
+	public Vista() {
+		listaClientes=Controlador.mostrarTablaCliente();	
+
 		setTitle("Videoclub");
 		setBounds(650, 300, 600, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -37,62 +47,58 @@ public class Vista extends JFrame {
 		setContentPane(contentPane);
 
 		System.out.println(contentPane);
-		
+
 		//ConexionSQL con = new ConexionSQL.mySQLConnection();
 
-		table_c = new JTable();
-		table_c.setFont(new Font("Tahoma", Font.BOLD, 13));
-		table_c.setBackground(new Color(216, 191, 216));
-		table_c.setBounds(36, 58, 515, 120);
-		contentPane.add(table_c);
-		
-		DefaultTableModel model_c = new DefaultTableModel();                    
-		
-		model_c.addColumn("id");
-		model_c.addColumn("nombre");
-		model_c.addColumn("apellido");
-		model_c.addColumn("direccion");
-		model_c.addColumn("dni");
-		model_c.addColumn("fecha");
-		
-		table_c.setModel(model_c);
-		//falta hacer el array
+		table = new JTable();
+		table.setFont(new Font("Tahoma", Font.BOLD, 13));
+		table.setBackground(new Color(216, 191, 216));
+		table.setBounds(36, 58, 515, 271);
+		contentPane.add(table);
 
-		JButton insert = new JButton("Insertar");
-		insert.setFont(new Font("Tahoma", Font.BOLD, 12));
-		insert.setForeground(new Color(216, 191, 216));
-		insert.setBackground(new Color(105, 105, 105));
-		insert.setBounds(36, 24, 134, 23);
-		contentPane.add(insert);
-		
-		JButton btnUpdate = new JButton("Actualizar");
+
+		model.addColumn("id");
+		model.addColumn("nombre");
+		model.addColumn("apellido");
+		model.addColumn("direccion");
+		model.addColumn("dni");
+		model.addColumn("fecha");
+
+		table.setModel(model);
+		for (int i = 0; i < listaClientes.size(); i++) {
+			model.addRow(listaClientes.get(i).devolverArray());
+		}
+
+		btnInsert = new JButton("Insertar");
+		btnInsert.setFont(new Font("Tahoma", Font.BOLD, 12));
+		btnInsert.setForeground(new Color(216, 191, 216));
+		btnInsert.setBackground(new Color(105, 105, 105));
+		btnInsert.setBounds(36, 24, 134, 23);
+		contentPane.add(btnInsert);
+
+		btnUpdate = new JButton("Modificar");
 		btnUpdate.setBackground(new Color(105, 105, 105));
 		btnUpdate.setForeground(new Color(216, 191, 216));
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnUpdate.setBounds(228, 24, 134, 23);
 		contentPane.add(btnUpdate);
-		
-		JButton btnEliminar = new JButton("Eliminar");
+
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setBackground(new Color(105, 105, 105));
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnEliminar.setForeground(new Color(216, 191, 216));
 		btnEliminar.setBounds(417, 24, 134, 23);
 		contentPane.add(btnEliminar);
 		
-		table_v = new JTable();
-		table_v.setFont(new Font("Tahoma", Font.BOLD, 13));
-		table_v.setBackground(new Color(216, 191, 216));
-		table_v.setBounds(36, 206, 515, 120);
-		contentPane.add(table_v);
-		
-		DefaultTableModel model_v= new DefaultTableModel();                    
-		
-		model_v.addColumn("id");
-		model_v.addColumn("title");
-		model_v.addColumn("director");
-		model_v.addColumn("cli_id");
-		
-		table_v.setModel(model_v);
-	
+	}
+	public void refrescar() {
+		listaClientes.clear();
+		listaClientes=Controlador.mostrarTablaCliente();	
+		for (int i = model.getRowCount()-1; i >= 0; i--) {
+			model.removeRow(i);
+		}
+		for (int i = 0; i < listaClientes.size(); i++) {
+			model.addRow(listaClientes.get(i).devolverArray());
+		}
 	}
 }
