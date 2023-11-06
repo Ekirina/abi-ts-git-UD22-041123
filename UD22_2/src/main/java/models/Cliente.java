@@ -10,7 +10,7 @@ public class Cliente {
 	String[] arrayCliente;
 
 	public Cliente(String id, String nombre, String apellido, String direccion, String dni, String fecha) {
-		super();
+		
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;

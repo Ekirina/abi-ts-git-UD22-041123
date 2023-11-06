@@ -1,5 +1,6 @@
 package controllers;
 import views.Vista;
+import views.Vista2;
 import views.VistaDelete;
 import views.VistaInsert;
 import views.VistaUpdate;
@@ -12,8 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import controllers.ConexionSQL;
 import models.Cliente;
+import models.Videos;
 
 public class Controlador {
 	String db = "";
@@ -21,9 +22,27 @@ public class Controlador {
 	String sentencia = "";
 	Connection conexion;
 	Vista vista;
-	
+	Vista2 vista2;
+
 	public Controlador(Vista vista) {
 		this.vista = vista;
+		vista2 = new Vista2();
+		vista2.setVisible(false);
+		vista.btnVerVideos.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				vista.setVisible(false);
+				vista2.setVisible(true);
+				vista2.btnVerCliente.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						vista2.setVisible(false);
+						vista.setVisible(true);
+					}
+				});
+			}
+		});
 		vista.btnEliminar.addActionListener(new ActionListener() {
 
 			@Override
@@ -91,7 +110,6 @@ public class Controlador {
 			}
 		});
 	}
-
 	public static ArrayList<Cliente> mostrarTablaCliente () {
 		try {
 			ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();	
@@ -122,6 +140,34 @@ public class Controlador {
 			System.out.println(ex);
 		}
 		return null;
+	}	
+		public static ArrayList<Videos> mostrarTablaVideos () {
+			try {
+				ArrayList<Videos> listaVideos = new ArrayList<Videos>();	
+				ConexionSQL.mySQLConnection("root", "primero", "videoclub");
+				Statement st = ConexionSQL.conexion.createStatement();
+				String sentencia = "SELECT * FROM Videos;";
+				ResultSet result = st.executeQuery(sentencia); //en conexion SQL es executeUpdate
+				while (result.next()) {
+					Videos videos;
+					String id;
+					String title;
+					String director;
+					String cli_id;
+					id=result.getString(1);	
+					title=result.getString(2);	
+					director = result.getString(3);					
+					cli_id = result.getString(4);					
+					
+					videos = new Videos(id, title, director, cli_id);
+					listaVideos.add(videos);
+				}
+				return listaVideos;
+			}catch (SQLException ex){
+				System.out.println("No se ha podido conectar con su bbdd de Videos");
+				System.out.println(ex);
+			}
+			return null;	
 		}
 		public void insertarDatos() {
 			}
