@@ -36,7 +36,7 @@ public class Vista extends JFrame {
 		listaClientes=Controlador.mostrarTablaCliente();	
 
 		setTitle("Videoclub");
-		setBounds(650, 300, 600, 400);
+		setBounds(550, 300, 600, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		contentPane = new JPanel();

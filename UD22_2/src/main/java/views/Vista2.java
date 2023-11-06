@@ -38,7 +38,7 @@ public class Vista2 extends JFrame {
 		listaVideos=Controlador.mostrarTablaVideos();	
 
 		setTitle("Videoclub");
-		setBounds(650, 300, 600, 400);
+		setBounds(550, 300, 600, 380);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 		contentPane = new JPanel();

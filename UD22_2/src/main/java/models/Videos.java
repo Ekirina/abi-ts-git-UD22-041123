@@ -73,7 +73,4 @@ public class Videos {
 	/**
 	 * @return the arrayVideos
 	 */
-	public String[] getArrayVideos() {
-		return arrayVideos;
-	}
 }

@@ -5,6 +5,7 @@ import views.VistaDelete;
 import views.VistaInsert;
 import views.VistaUpdate;
 import views.VistaVideosDelete;
+import views.VistaVideosInsert;
 import views.VistaVideosUpdate;
 
 import java.awt.event.ActionEvent;
@@ -30,6 +31,30 @@ public class Controlador {
 		this.vista = vista;
 		vista2 = new Vista2();
 		vista2.setVisible(false);
+		vista2.btnInsert.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VistaVideosInsert vistaVideosInsert = new VistaVideosInsert();
+				vistaVideosInsert.setVisible(true);
+				vistaVideosInsert.Guardar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String id = vistaVideosInsert.textID.getText();
+						String title = vistaVideosInsert.textTitle.getText();
+						String director = vistaVideosInsert.textDirector.getText();
+						String cli_id = vistaVideosInsert.textCli_id.getText();
+						
+						sentencia = "(id, title, director, cli_id) values ("+id+", '"+title+"', '"+director+"', "+cli_id+");";
+						ConexionSQL.insertData("videoclub", "Videos", sentencia);
+						vista.refrescar();
+						
+					}
+					
+				});
+			}
+		});
 		vista2.btnUpdate.addActionListener(new ActionListener() {
 
 			@Override
@@ -41,22 +66,16 @@ public class Controlador {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						String id = vistaVideosUpdate.textID.getText();
-						/*String title = vistaVideosUpdate.textApellido.getText();
-						String apellido = vistaVideosUpdate.textApellido.getText();
-						String direccion = vistaVideosUpdate.textDireccion.getText();
-						String dni = vistaVideosUpdate.textDNI.getText();
-						String fecha = vistaVideosUpdate.textFecha.getText();
+						String title = vistaVideosUpdate.textTitle.getText();
+						String director = vistaVideosUpdate.textDirector.getText();
+						String cli_id = vistaVideosUpdate.textCli_id.getText();
 						
-						sentencia = "SET nombre = '"+nombre+"', apellido = '"+apellido+"', direccion = '"+direccion+"', dni = "+dni+", fecha= '"+fecha+"' WHERE id = "+id+";";
-						ConexionSQL.updateData("videoclub", "Cliente", sentencia);
-						vista.refrescar();*/
-						
-					}
-					
-				});
-				
-			}
-			
+						sentencia = "SET title = '"+title+"', director = '"+director+"', cli_id = "+cli_id+" WHERE id = "+id+";";
+						ConexionSQL.updateData("videoclub", "Videos", sentencia);
+						vista2.refrescar();						
+					}				
+				});			
+			}			
 		});
 		vista2.btnEliminar.addActionListener(new ActionListener() {
 			@Override
@@ -69,7 +88,7 @@ public class Controlador {
 					public void actionPerformed(ActionEvent e) {
 						String id = vistaVideosDelete.textID.getText();
 						sentencia = "WHERE id = "+id+";";
-						ConexionSQL.deleteData("videoclub", "Cliente", sentencia);
+						ConexionSQL.deleteData("videoclub", "Videos", sentencia);
 						vista2.refrescar();
 					}
 				});

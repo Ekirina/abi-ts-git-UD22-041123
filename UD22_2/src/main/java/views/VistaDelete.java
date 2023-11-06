@@ -24,7 +24,7 @@ public class VistaDelete extends JFrame {
 	public VistaDelete() {
 		setTitle("Eliminar Cliente");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 300, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(216, 191, 216));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
