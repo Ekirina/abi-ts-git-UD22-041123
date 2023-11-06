@@ -4,6 +4,8 @@ import views.Vista2;
 import views.VistaDelete;
 import views.VistaInsert;
 import views.VistaUpdate;
+import views.VistaVideosDelete;
+import views.VistaVideosUpdate;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,6 +30,52 @@ public class Controlador {
 		this.vista = vista;
 		vista2 = new Vista2();
 		vista2.setVisible(false);
+		vista2.btnUpdate.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaVideosUpdate vistaVideosUpdate = new VistaVideosUpdate();
+				vistaVideosUpdate.setVisible(true);
+				vistaVideosUpdate.Guardar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String id = vistaVideosUpdate.textID.getText();
+						/*String title = vistaVideosUpdate.textApellido.getText();
+						String apellido = vistaVideosUpdate.textApellido.getText();
+						String direccion = vistaVideosUpdate.textDireccion.getText();
+						String dni = vistaVideosUpdate.textDNI.getText();
+						String fecha = vistaVideosUpdate.textFecha.getText();
+						
+						sentencia = "SET nombre = '"+nombre+"', apellido = '"+apellido+"', direccion = '"+direccion+"', dni = "+dni+", fecha= '"+fecha+"' WHERE id = "+id+";";
+						ConexionSQL.updateData("videoclub", "Cliente", sentencia);
+						vista.refrescar();*/
+						
+					}
+					
+				});
+				
+			}
+			
+		});
+		vista2.btnEliminar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VistaVideosDelete vistaVideosDelete = new VistaVideosDelete();
+				vistaVideosDelete.setVisible(true);
+				vistaVideosDelete.eliminar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String id = vistaVideosDelete.textID.getText();
+						sentencia = "WHERE id = "+id+";";
+						ConexionSQL.deleteData("videoclub", "Cliente", sentencia);
+						vista2.refrescar();
+					}
+				});
+			}
+		});
+		
 		vista.btnVerVideos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -110,6 +158,8 @@ public class Controlador {
 			}
 		});
 	}
+	
+	
 	public static ArrayList<Cliente> mostrarTablaCliente () {
 		try {
 			ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();	

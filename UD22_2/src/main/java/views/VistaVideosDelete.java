@@ -12,7 +12,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class VistaDelete extends JFrame {
+public class VistaVideosDelete extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -21,8 +21,8 @@ public class VistaDelete extends JFrame {
 	public JTextField textID;
 	private JLabel lblEnunciado;
 
-	public VistaDelete() {
-		setTitle("Eliminar Cliente");
+	public VistaVideosDelete() {
+		setTitle("Eliminar video");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -33,14 +33,14 @@ public class VistaDelete extends JFrame {
 		contentPane.setLayout(null);
 		
 		lblEnunciado = new JLabel("Elige la ID a eliminar:");
-		lblEnunciado.setForeground(new Color(105, 105, 105));
+		lblEnunciado.setForeground(new Color(216, 191, 216));
 		lblEnunciado.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblEnunciado.setBackground(new Color(216, 191, 216));
 		lblEnunciado.setBounds(65, 107, 155, 14);
 		contentPane.add(lblEnunciado);
 		
 		JLabel labelID = new JLabel("ID");
-		labelID.setForeground(new Color(128, 128, 128));
+		labelID.setForeground(new Color(216, 191, 216));
 		labelID.setFont(new Font("Tahoma", Font.BOLD, 12));
 		labelID.setBackground(new Color(221, 160, 221));
 		labelID.setBounds(246, 107, 23, 14);
@@ -48,8 +48,8 @@ public class VistaDelete extends JFrame {
 		
 		textID = new JTextField();
 		textID.setFont(new Font("Tahoma", Font.BOLD, 12));
-		textID.setForeground(new Color(255, 255, 255));
-		textID.setBackground(new Color(105, 105, 105));
+		textID.setForeground(new Color(105, 105, 105));
+		textID.setBackground(new Color(216, 191, 216));
 		textID.setBounds(279, 104, 96, 20);
 		contentPane.add(textID);
 		textID.setColumns(10);
@@ -63,7 +63,7 @@ public class VistaDelete extends JFrame {
 		
 		table = new JTable();
 		table.setFont(new Font("Tahoma", Font.BOLD, 12));
-		table.setBackground(new Color(220, 220, 220));
+		table.setBackground(new Color(105, 105, 105));
 		table.setBounds(10, 24, 416, 214);
 		contentPane.add(table);
 		

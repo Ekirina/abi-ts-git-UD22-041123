@@ -22,7 +22,7 @@ public class VistaDelete extends JFrame {
 	private JLabel lblEnunciado;
 
 	public VistaDelete() {
-		setTitle("Modificar Cliente");
+		setTitle("Eliminar Cliente");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
