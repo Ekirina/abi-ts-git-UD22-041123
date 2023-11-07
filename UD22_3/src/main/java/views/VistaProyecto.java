@@ -40,6 +40,7 @@ public class VistaProyecto extends JFrame {
 		setBounds(550, 300, 600, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(25, 25, 112));
 		contentPane.setLayout(null);
 		setContentPane(contentPane);
 
@@ -53,14 +54,14 @@ public class VistaProyecto extends JFrame {
 		contentPane.add(btnInsert);
 
 		btnUpdate = new JButton("Modificar");
-		btnUpdate.setBackground(new Color(0, 0, 128));
+		btnUpdate.setBackground(new Color(25, 25, 112));
 		btnUpdate.setForeground(new Color(255, 255, 255));
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnUpdate.setBounds(228, 24, 134, 23);
 		contentPane.add(btnUpdate);
 
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBackground(new Color(0, 0, 128));
+		btnEliminar.setBackground(new Color(25, 25, 112));
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnEliminar.setForeground(new Color(255, 255, 255));
 		btnEliminar.setBounds(417, 24, 134, 23);
@@ -76,9 +77,9 @@ public class VistaProyecto extends JFrame {
 		//ConexionSQL con = new ConexionSQL.mySQLConnection();
 
 		table = new JTable();
-		table.setForeground(new Color(255, 255, 224));
+		table.setForeground(new Color(25, 25, 112));
 		table.setFont(new Font("Tahoma", Font.BOLD, 13));
-		table.setBackground(new Color(25, 25, 112));
+		table.setBackground(new Color(255, 255, 255));
 		table.setBounds(0, 58, 586, 229);
 		contentPane.add(table);
 

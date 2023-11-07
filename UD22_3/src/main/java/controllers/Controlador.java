@@ -1,6 +1,9 @@
 package controllers;
 import views.VistaAsignado_a;
 import views.VistaCientificos;
+import views.VistaDeleteAsignado_a;
+import views.VistaDeleteCientificos;
+import views.VistaDeleteProyecto;
 import views.VistaPrincipal;
 import views.VistaProyecto;
 
@@ -79,25 +82,61 @@ public class Controlador {
 				});
 			}		
 		});
-		/*vista.btnEliminar.addActionListener(new ActionListener() {
+		vistaCientificos.btnEliminar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaDelete vistaDelete = new VistaDelete();
-				vistaDelete.setVisible(true);
-				vistaDelete.eliminar.addActionListener(new ActionListener() {
+				VistaDeleteCientificos vistaDeleteCientificos = new VistaDeleteCientificos();
+				vistaDeleteCientificos.setVisible(true);
+				vistaDeleteCientificos.eliminar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						String id = vistaDelete.textID.getText();
-						sentencia = "WHERE id = "+id+";";
-						ConexionSQL.deleteData("videoclub", "Cliente", sentencia);
-						vista.refrescar();
+						String dni = vistaDeleteCientificos.textDNI.getText();
+						sentencia = "WHERE dni = "+dni+";";
+						ConexionSQL.deleteData("estudios", "Cientificos", sentencia);
+						vistaCientificos.refrescar();
 					}		
 				});
 			}	
 		});
-		vista.btnUpdate.addActionListener(new ActionListener() {
+		vistaProyecto.btnEliminar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaDeleteProyecto vistaDeleteProyecto = new VistaDeleteProyecto();
+				vistaDeleteProyecto.setVisible(true);
+				vistaDeleteProyecto.eliminar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String id = vistaDeleteProyecto.textID.getText();
+						sentencia = "WHERE id = "+id+";";
+						ConexionSQL.deleteData("estudios", "Proyecto", sentencia);
+						vistaProyecto.refrescar();
+					}		
+				});
+			}	
+		});
+		vistaAsignado_a.btnEliminar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaDeleteAsignado_a vistaDeleteAsignado_a = new VistaDeleteAsignado_a();
+				vistaDeleteAsignado_a.setVisible(true);
+				vistaDeleteAsignado_a.eliminar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String cientifico = vistaDeleteAsignado_a.textCientifico.getText();
+						sentencia = "WHERE cientifico = "+cientifico+";";
+						ConexionSQL.deleteData("estudios", "Asignado_a", sentencia);
+						vistaProyecto.refrescar();
+					}		
+				});
+			}	
+		});
+		/*vista.btnUpdate.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -200,7 +239,7 @@ public static ArrayList<Asignado_a> mostrarTablaAsignado_a () {
 			ArrayList<Asignado_a> listaAsignado_a = new ArrayList<Asignado_a>();	
 			ConexionSQL.mySQLConnection("root", "primero", "estudios");
 			Statement st = ConexionSQL.conexion.createStatement();
-			String sentencia = "SELECT * FROM Proyecto;";
+			String sentencia = "SELECT * FROM Asignado_a;";
 			ResultSet result = st.executeQuery(sentencia); //en conexion SQL es executeUpdate
 			while (result.next()) {
 				Asignado_a asignado_a;

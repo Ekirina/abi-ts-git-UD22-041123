@@ -24,16 +24,17 @@ public class VistaAsignado_a extends JFrame {
 	private String sql;
 	public JButton btnInsert;
 	public JButton btnUpdate;
-	public JButton btnEliminar;
 	public JButton btnVolver;
-
+	public JButton btnEliminar;
+	
 	DefaultTableModel model = new DefaultTableModel();   
 
 	ArrayList<Asignado_a> listaAsignado_a;																											
+	
 	public VistaAsignado_a() {
 		listaAsignado_a=Controlador.mostrarTablaAsignado_a();	
 
-		setTitle("Proyectos");
+		setTitle("Proyectos asignados");
 		setBounds(550, 300, 600, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -50,21 +51,21 @@ public class VistaAsignado_a extends JFrame {
 		contentPane.add(btnInsert);
 
 		btnUpdate = new JButton("Modificar");
-		btnUpdate.setBackground(new Color(0, 0, 128));
+		btnUpdate.setBackground(new Color(25, 25, 112));
 		btnUpdate.setForeground(new Color(255, 255, 255));
 		btnUpdate.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnUpdate.setBounds(228, 24, 134, 23);
 		contentPane.add(btnUpdate);
 
 		btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBackground(new Color(0, 0, 128));
+		btnEliminar.setBackground(new Color(25, 25, 112));
 		btnEliminar.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnEliminar.setForeground(new Color(255, 255, 255));
 		btnEliminar.setBounds(417, 24, 134, 23);
 		contentPane.add(btnEliminar);
 
 		btnVolver = new JButton("Volver");
-		btnVolver.setForeground(new Color(0, 0, 128));
+		btnVolver.setForeground(new Color(25, 25, 112));
 		btnVolver.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnVolver.setBackground(new Color(255, 255, 255));
 		btnVolver.setBounds(228, 311, 134, 23);
@@ -80,9 +81,8 @@ public class VistaAsignado_a extends JFrame {
 		contentPane.add(table);
 
 
-		model.addColumn("id");
-		model.addColumn("nombre");
-		model.addColumn("horas");
+		model.addColumn("cientifico");
+		model.addColumn("proyecto");
 
 		table.setModel(model);
 		for (int i = 0; i < listaAsignado_a.size(); i++) {
