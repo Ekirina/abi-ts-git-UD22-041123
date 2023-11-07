@@ -49,7 +49,7 @@ public class VistaVideosDelete extends JFrame {
 		textID = new JTextField();
 		textID.setFont(new Font("Tahoma", Font.BOLD, 12));
 		textID.setForeground(new Color(105, 105, 105));
-		textID.setBackground(new Color(216, 191, 216));
+		textID.setBackground(new Color(255, 255, 255));
 		textID.setBounds(279, 104, 96, 20);
 		contentPane.add(textID);
 		textID.setColumns(10);

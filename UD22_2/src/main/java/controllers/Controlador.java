@@ -48,10 +48,8 @@ public class Controlador {
 						
 						sentencia = "(id, title, director, cli_id) values ("+id+", '"+title+"', '"+director+"', "+cli_id+");";
 						ConexionSQL.insertData("videoclub", "Videos", sentencia);
-						vista.refrescar();
-						
-					}
-					
+						vista2.refrescar();						
+					}			
 				});
 			}
 		});
