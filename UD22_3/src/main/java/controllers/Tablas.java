@@ -19,9 +19,9 @@ public class Tablas extends ConexionSQL {
 				+ "foreign key(proyecto) REFERENCES Proyecto (id)"
 				+ "ON DELETE CASCADE ON UPDATE CASCADE,"
 				+ "primary key(cientifico, proyecto));");
-		ConexionSQL.insertData("estudios", "Cientificos", "(dni, nom_apels) values ('15465388', 'Thelma Bilbourg');");
-		ConexionSQL.insertData("estudios", "Proyecto", "(id, nombre, horas) values ('9001', 'Canis Bilis', 150);");
-		ConexionSQL.insertData("estudios", "Asignado_a", "(cientifico, proyecto) values ('15465388', '9001');");
+		ConexionSQL.insertData("estudios", "Cientificos", "(dni, nom_apels) values ('1546538O', 'Thelma Bilbourg'), ('7654382P', 'Cameron Daniels');");
+		ConexionSQL.insertData("estudios", "Proyecto", "(id, nombre, horas) values ('9001', 'Canis Lupus', 150), ('9002', 'Struthio camelus', 70);");
+		ConexionSQL.insertData("estudios", "Asignado_a", "(cientifico, proyecto) values ('1546538O', '9001'), ('7654382P', '9001'), ('7654382P', '9002');");
 		ConexionSQL.closeConnection();
 	}
 }

@@ -4,8 +4,14 @@ import views.VistaCientificos;
 import views.VistaDeleteAsignado_a;
 import views.VistaDeleteCientificos;
 import views.VistaDeleteProyecto;
+import views.VistaInsertAsignado_a;
+import views.VistaInsertCientificos;
+import views.VistaInsertProyecto;
 import views.VistaPrincipal;
 import views.VistaProyecto;
+import views.VistaUpdateAsignado_a;
+import views.VistaUpdateCientificos;
+import views.VistaUpdateProyecto;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -131,59 +137,133 @@ public class Controlador {
 						String cientifico = vistaDeleteAsignado_a.textCientifico.getText();
 						sentencia = "WHERE cientifico = "+cientifico+";";
 						ConexionSQL.deleteData("estudios", "Asignado_a", sentencia);
-						vistaProyecto.refrescar();
+						vistaAsignado_a.refrescar();
 					}		
 				});
 			}	
 		});
-		/*vista.btnUpdate.addActionListener(new ActionListener() {
+		vistaCientificos.btnUpdate.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				VistaUpdate vistaUpdate = new VistaUpdate();
-				vistaUpdate.setVisible(true);
-				vistaUpdate.Guardar.addActionListener(new ActionListener() {
+				VistaUpdateCientificos vistaUpdateCientificos = new VistaUpdateCientificos();
+				vistaUpdateCientificos.setVisible(true);
+				vistaUpdateCientificos.Guardar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						String id = vistaUpdate.textID.getText();
-						String nombre = vistaUpdate.textNombre.getText();
-						String apellido = vistaUpdate.textApellido.getText();
-						String direccion = vistaUpdate.textDireccion.getText();
-						String dni = vistaUpdate.textDNI.getText();
-						String fecha = vistaUpdate.textFecha.getText();
+						String dni = vistaUpdateCientificos.textDNI.getText();
+						String nom_apels = vistaUpdateCientificos.textNom_apels.getText();		
 						
-						sentencia = "SET nombre = '"+nombre+"', apellido = '"+apellido+"', direccion = '"+direccion+"', dni = "+dni+", fecha= '"+fecha+"' WHERE id = "+id+";";
-						ConexionSQL.updateData("videoclub", "Cliente", sentencia);
-						vista.refrescar();
+						sentencia = "SET dni = "+dni+", nom_apels = '"+nom_apels+"' WHERE dni = "+dni+";";
+						ConexionSQL.updateData("estudios", "Cientificos", sentencia);
+						vistaCientificos.refrescar();
 					}	
 				});
 			}
 		});
-		vista.btnInsert.addActionListener(new ActionListener() {
+		vistaProyecto.btnUpdate.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaUpdateProyecto vistaUpdateProyecto = new VistaUpdateProyecto();
+				vistaUpdateProyecto.setVisible(true);
+				vistaUpdateProyecto.Guardar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String id = vistaUpdateProyecto.textID.getText();
+						String nombre = vistaUpdateProyecto.textNombre.getText();
+						String horas = vistaUpdateProyecto.textHoras.getText();
+						
+						sentencia = "SET id = "+id+", nombre = '"+nombre+"', horas = "+horas+" WHERE id = "+id+";";
+						ConexionSQL.updateData("estudios", "Proyecto", sentencia);
+						vistaProyecto.refrescar();
+					}	
+				});
+			}
+		});
+		vistaAsignado_a.btnUpdate.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaUpdateAsignado_a vistaUpdateAsignado_a = new VistaUpdateAsignado_a();
+				vistaUpdateAsignado_a.setVisible(true);
+				vistaUpdateAsignado_a.Guardar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String cientifico = vistaUpdateAsignado_a.textCientifico.getText();
+						String proyecto = vistaUpdateAsignado_a.textProyecto.getText();
+						
+						sentencia = "SET cientifico = "+cientifico+", proyecto = '"+proyecto+" WHERE cientifico = "+cientifico+";";
+						ConexionSQL.updateData("estudios", "Asignado_a", sentencia);
+						vistaProyecto.refrescar();
+					}	
+				});
+			}
+		});
+		vistaCientificos.btnInsert.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				VistaInsert vistaInsert = new VistaInsert();
-				vistaInsert.setVisible(true);
-				vistaInsert.Guardar.addActionListener(new ActionListener() {
+				VistaInsertCientificos vistaInsertCientificos = new VistaInsertCientificos();
+				vistaInsertCientificos.setVisible(true);
+				vistaInsertCientificos.Guardar.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						String id = vistaInsert.textID.getText();
-						String nombre = vistaInsert.textNombre.getText();
-						String apellido = vistaInsert.textApellido.getText();
-						String direccion = vistaInsert.textDireccion.getText();
-						String dni = vistaInsert.textDNI.getText();
-						String fecha = vistaInsert.textFecha.getText();
+						String dni = vistaInsertCientificos.textDNI.getText();
+						String nom_apels = vistaInsertCientificos.textNom_apels.getText();
 						
-						sentencia = "(id, nombre, apellido, direccion, dni, fecha) values ("+id+", '"+nombre+"', '"+apellido+"', '"+direccion+"', "+dni+", '"+fecha+"');";
-						ConexionSQL.insertData("videoclub", "Cliente", sentencia);
-						vista.refrescar();
+						sentencia = "(dni, nom_apels) values ('"+dni+"', '"+nom_apels+"');";
+						ConexionSQL.insertData("estudios", "Cientificos", sentencia);
+						vistaCientificos.refrescar();
 					}
 				});
 			}
-		});*/
+		});
+		vistaProyecto.btnInsert.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VistaInsertProyecto vistaInsertProyecto = new VistaInsertProyecto();
+				vistaInsertProyecto.setVisible(true);
+				vistaInsertProyecto.Guardar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						String id = vistaInsertProyecto.textId.getText();
+						String nombre = vistaInsertProyecto.textNombre.getText();
+						String horas = vistaInsertProyecto.textHoras.getText();
+						
+						sentencia = "(id, nombre, horas) values ('"+id+"', '"+nombre+"', "+horas+");";
+						ConexionSQL.insertData("estudios", "Proyecto", sentencia);
+						vistaProyecto.refrescar();
+					}
+				});
+			}
+		});
+		vistaAsignado_a.btnInsert.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				VistaInsertAsignado_a vistaInsertAsignado_a = new VistaInsertAsignado_a();
+				vistaInsertAsignado_a.setVisible(true);
+				vistaInsertAsignado_a.Guardar.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						String cientifico = vistaInsertAsignado_a.textCientifico.getText();
+						String proyecto = vistaInsertAsignado_a.textProyecto.getText();
+						
+						sentencia = "(cientifico, proyecto) values ('"+cientifico+"', '"+proyecto+"');";
+						ConexionSQL.insertData("estudios", "Asignado_a", sentencia);
+						vistaAsignado_a.refrescar();
+					}
+				});
+			}
+		});
 	}
 
 	public static ArrayList<Cientificos> mostrarTablaCientificos () {
