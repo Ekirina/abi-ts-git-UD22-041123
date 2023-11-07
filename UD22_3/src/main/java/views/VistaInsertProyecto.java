@@ -24,9 +24,9 @@ public class VistaInsertProyecto extends JFrame {
 	public JTextField textHoras;
 
 	public VistaInsertProyecto() {
-		setTitle("Insertar nuevo científico");
+		setTitle("Insertar nuevo proyecto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(550, 300, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(25, 25, 112));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

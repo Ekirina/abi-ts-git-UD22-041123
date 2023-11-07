@@ -99,7 +99,7 @@ public class Controlador {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						String dni = vistaDeleteCientificos.textDNI.getText();
-						sentencia = "WHERE dni = "+dni+";";
+						sentencia = "WHERE dni = '"+dni+"';";
 						ConexionSQL.deleteData("estudios", "Cientificos", sentencia);
 						vistaCientificos.refrescar();
 					}		
@@ -135,7 +135,7 @@ public class Controlador {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						String cientifico = vistaDeleteAsignado_a.textCientifico.getText();
-						sentencia = "WHERE cientifico = "+cientifico+";";
+						sentencia = "WHERE cientifico = '"+cientifico+"';";
 						ConexionSQL.deleteData("estudios", "Asignado_a", sentencia);
 						vistaAsignado_a.refrescar();
 					}		
@@ -155,7 +155,7 @@ public class Controlador {
 						String dni = vistaUpdateCientificos.textDNI.getText();
 						String nom_apels = vistaUpdateCientificos.textNom_apels.getText();		
 						
-						sentencia = "SET dni = "+dni+", nom_apels = '"+nom_apels+"' WHERE dni = "+dni+";";
+						sentencia = "SET dni = '"+dni+"', nom_apels = '"+nom_apels+"' WHERE dni = '"+dni+"';";
 						ConexionSQL.updateData("estudios", "Cientificos", sentencia);
 						vistaCientificos.refrescar();
 					}	
@@ -196,7 +196,7 @@ public class Controlador {
 						String cientifico = vistaUpdateAsignado_a.textCientifico.getText();
 						String proyecto = vistaUpdateAsignado_a.textProyecto.getText();
 						
-						sentencia = "SET cientifico = "+cientifico+", proyecto = '"+proyecto+" WHERE cientifico = "+cientifico+";";
+						sentencia = "SET cientifico = '"+cientifico+"', proyecto = '"+proyecto+"' WHERE cientifico = '"+cientifico+"';";
 						ConexionSQL.updateData("estudios", "Asignado_a", sentencia);
 						vistaProyecto.refrescar();
 					}	

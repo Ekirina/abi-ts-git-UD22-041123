@@ -23,9 +23,9 @@ public class VistaInsertAsignado_a extends JFrame {
 	public JTextField textProyecto;
 
 	public VistaInsertAsignado_a() {
-		setTitle("Insertar nuevo científico");
+		setTitle("Insertar nuevo proyecto asignado");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(550, 300, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(25, 25, 112));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

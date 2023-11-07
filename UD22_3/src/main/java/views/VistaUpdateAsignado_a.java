@@ -23,9 +23,9 @@ public class VistaUpdateAsignado_a extends JFrame {
 	private JLabel lblEnunciado;
 
 	public VistaUpdateAsignado_a() {
-		setTitle("Modificar Cliente");
+		setTitle("Modificar proyecto asignado");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 300, 450, 300);
+		setBounds(550, 300, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

@@ -25,9 +25,9 @@ public class VistaUpdateProyecto extends JFrame {
 	private JLabel lblEnunciado;
 
 	public VistaUpdateProyecto() {
-		setTitle("Modificar Cliente");
+		setTitle("Modificar proyecto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 300, 450, 300);
+		setBounds(550, 300, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
